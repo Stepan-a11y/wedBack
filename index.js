@@ -20,12 +20,7 @@ app.get('/', (req, res) => {
 router.get('/getguests', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
-    Guests.find({}, (err, guests) => {
-         if(err) throw err;
-         return res.send(guests)
-       });
-
-    Item.find({}).then((guests) => res.send(guests)).catch(function(err){
+    Guests.find({}).then((guests) => res.send(guests)).catch(function(err){
     if(err) throw err;
   })
   });
