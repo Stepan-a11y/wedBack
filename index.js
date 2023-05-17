@@ -24,6 +24,10 @@ router.get('/getguests', (req, res) => {
          if(err) throw err;
          return res.send(guests)
        });
+
+    Item.find({}).then((guests) => res.send(guests)).catch(function(err){
+    if(err) throw err;
+  })
   });
 
 router.post( '/newguest', (req, res) => {
