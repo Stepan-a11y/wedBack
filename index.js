@@ -17,6 +17,15 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+router.get('/getguests', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+    Guests.find({}, (err, guests) => {
+         if(err) throw err;
+         return res.send(guests)
+       });
+  });
+
 router.post( '/newguest', (req, res) => {
     let newGuest = new Guests({
         firstName: req.body.firstName,
